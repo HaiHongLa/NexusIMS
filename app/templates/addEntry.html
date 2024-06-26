@@ -1,0 +1,42 @@
+{% extends "dashboardBase.html" %}
+
+{% block title %}
+Dashboard - Nexus IMS
+{% endblock %}
+
+{% block content %}
+ 
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form>
+          <div class="mb-3">
+            <label for="select1" class="form-label">Select Facility</label>
+            <select class="form-select" id="select1">
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="select2" class="form-label">Select Product</label>
+            <select class="form-select" id="select2">
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="numberInput" class="form-label">Enter Quantity</label>
+            <input type="number" class="form-control" id="numberInput" placeholder="Enter a number" min="0">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer_year %}
+2024
+{% endblock %}

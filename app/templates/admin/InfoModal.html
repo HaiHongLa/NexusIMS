@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta and title -->
+  <meta charset="UTF-8">
+  <title>Admin Page Guide</title>
+
+  <!-- External CSS link -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Inline CSS styles -->
+  <style>
+    /* Styling for positioning a button in the top right corner */
+    .top-right {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
+    
+    /* Custom button style with yellow background */
+    .btn-yellow {
+      background-color: yellow;
+      color: black;
+      border: none;
+    }
+    
+    /* Large font size for section subtitles */
+    .large-subtitle {
+      font-size: 2em;
+    }
+    
+    /* Additional spacing for sections */
+    .triple-space {
+      margin-bottom: 3rem; /* Larger spacing after points and images */
+    }
+  </style>
+</head>
+<body>
+  <!-- Jumbotron section for title -->
+  <div class="jumbotron text-center" style="background-color: #FFD700;">
+    <h1 class="display-4">Admin Page Guide</h1>
+  </div>
+
+  <!-- Button to navigate back to the admin page -->
+  <a href="/admin" class="btn btn-yellow top-right">← Back to Admin</a>
+
+  <!-- Main container for the content -->
+  <div class="container">
+    <!-- Home section -->
+    <h2 style="color: blue;" class="text-center font-weight-bold mb-6 large-subtitle">
+      Home
+      <a href="/admin" class="btn btn-yellow float-right">Go to Home</a> <!-- Link to home page -->
+    </h2>
+    
+    <!-- Instructions for the home section -->
+    <p class="h4 font-weight-bold mb-4">1. Click the icon in the top right corner for help.</p>
+    <img src="/static/img/infoModel/1_Home/1_Home.png" class="img-fluid d-block mx-auto mb-4" alt="Home Page"> <!-- Image for Home section -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-4">2. Map of all available facilities with their names and locations.</p>
+    <img src="/static/img/infoModel/1_Home/2_Map.png" class="img-fluid d-block mx-auto mb-4" alt="Map of Facilities"> <!-- Image of map -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <!-- Personnel section -->
+    <h2 style="color: blue;" class="text-center font-weight-bold mb-6 large-subtitle">
+      Personnel
+      <a href="/admin/user" class="btn btn-yellow float-right">Go to Personnel</a> <!-- Link to personnel section -->
+    </h2>
+    
+    <!-- Instructions for personnel section -->
+    <p class="h4 font-weight-bold mb-4">1. The Personnel page displays user information.</p>
+    <img src="/static/img/infoModel/2_Personnel/1_Personnel.png" class="img-fluid d-block mx-auto mb-4" alt="Personnel Information"> <!-- Image for Personnel -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-4">2. This section allows users to edit their information.</p>
+    <img src="/static/img/infoModel/2_Personnel/2_Edit.png" class="img-fluid d-block mx-auto mb-4" alt="Edit Information"> <!-- Image showing edit functionality -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-6">3. Admins can use this section to delete a user.</p> <!-- Instruction for deleting a user -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <!-- Products section -->
+    <h2 style="color: blue;" class="text-center font-weight-bold mb-6 large-subtitle">
+      Products
+      <a href="/admin/product" class="btn btn-yellow float-right">Go to Products</a> <!-- Link to product section -->
+    </h2>
+    
+    <!-- Instructions for product section -->
+    <p class="h4 font-weight-bold mb-4">1. This section contains the names of the products.</p>
+    <img src="/static/img/infoModel/3_Products/1_Product.png" class="img-fluid d-block mx-auto mb-4" alt="Product Names"> <!-- Image showing product names -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-4">2. It also shows the availability of products.</p> <!-- Instruction for product availability -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-4">3. Users can view detailed information about each product.</p> <!-- Instruction for product details -->
+    <img src="/static/img/infoModel/3_Products/2_View.png" class="img-fluid d-block mx-auto mb-4" alt="Product Availability"> <!-- Image for product details -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-4">4. Users can edit the information of each product.</p>
+    <img src="/static/img/infoModel/3_Products/3_Edit.png" class="img-fluid d-block mx-auto mb-6" alt="Edit Product Information"> <!-- Image showing edit functionality -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-6">5. Admins can delete specific products.</p> <!-- Instruction for deleting products -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <!-- Components section -->
+    <h2 style="color: blue;" class="text-center font-weight-bold mb-6 large-subtitle">
+      Components
+      <a href="/admin/component" class="btn btn-yellow float-right">Go to Components</a> <!-- Link to component section -->
+    </h2>
+    
+    <!-- Instructions for component section -->
+    <p class="h4 font-weight-bold mb-4">1. This page allows users to view all components and their properties.</p>
+    <img src="/static/img/infoModel/4_Components/1_Components.png" class="img-fluid d-block mx-auto mb-4" alt="View All Components"> <!-- Image for components -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-4">2. Users can view detailed properties of each component.</p>
+    <img src="/static/img/infoModel/4_Components/2_View.png" class="img-fluid d-block mx-auto mb-4" alt="View Component Details"> <!-- Image for component details -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-4">3. Users can edit the properties of each component.</p> <!-- Instruction for editing component properties -->
+    <img src="/static/img/infoModel/4_Components/3_Edit.png" class="img-fluid d-block mx-auto mb-6" alt="Edit Component Properties"> <!-- Image showing edit functionality -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-4">4. Users can remove components.</p> <!-- Instruction for removing components -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-6">5. Users can add more components by clicking "Create" and entering the necessary information.</p> <!-- Instruction for adding components -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <!-- Facilities section -->
+    <h2 style="color: blue;" class="text-center font-weight-bold mb-6 large-subtitle">
+      Facilities
+      <a href="/admin/productionfacility" class="btn btn-yellow float-right">Go to Facilities</a> <!-- Link to facility section -->
+    </h2>
+    
+    <!-- Instructions for facility section -->
+    <p class="h4 font-weight-bold mb-4">1. This page allows users to view existing facilities, their locations, and operating status.</p> <!-- Instruction for facility overview -->
+    <img src="/static/img/infoModel/5_Facilities/1_Facilities.png" class="img-fluid d-block mx-auto mb-4" alt="Facilities Overview"> <!-- Image for facilities -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-4">2. Users can see whether a facility is operating.</p> <!-- Instruction for facility operating status -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-4">3. Users can view specific details of each facility.</p> <!-- Instruction for facility details -->
+    <img src="/static/img/infoModel/5_Facilities/2_View.png" class="img-fluid d-block mx-auto mb-4" alt="Facility Details"> <!-- Image for facility details -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-4">4. Users can modify the information of each property.</p> <!-- Instruction for editing facility information -->
+    <img src="/static/img/infoModel/5_Facilities/3_Edit.png" class="img-fluid d-block mx-auto mb-6" alt="Edit Facility Information"> <!-- Image for facility edit -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <p class="h4 font-weight-bold mb-6">5. Users can delete specific properties from the list.</p> <!-- Instruction for deleting facility properties -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+
+    <!-- Database Transactions section -->
+    <h2 style="color: blue;" class="text-center font-weight-bold mb-6 large-subtitle">
+      Database Transactions
+      <a href="/admin/databasetransaction" class="btn btn-yellow float-right">Go to Database Transactions</a> <!-- Link to database transaction section -->
+    </h2>
+    
+    <!-- Instructions for database transactions -->
+    <p class="h4 font-weight-bold mb-4">1. Database Transactions allow users to view all modifications to existing tables, including details about what was changed and when the change occurred.</p> <!-- Instruction for database transactions -->
+    <img src="/static/img/infoModel/6_Database_Transaction/1_Database_Transaction.png" class="img-fluid d-block mx-auto mb-6" alt="Database Transaction Overview"> <!-- Image for database transactions -->
+    <div class="triple-space"></div> <!-- Extra spacing -->
+  </div>
+
+  <!-- JavaScript files -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

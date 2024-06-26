@@ -1,0 +1,9 @@
+/venv
+.app/
+*__pycache__*
+runserver.sh
+*.coverage
+coverage.xml
+*.mypy_cache
+.gitlab*
+.env

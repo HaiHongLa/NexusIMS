@@ -1,0 +1,33 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+<!-- Import Plotly CDN -->
+<script src="https://cdn.plot.ly/plotly-2.29.1.min.js" charset="utf-8"></script>
+
+<!-- Header -->
+<div class="container">    
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1 style="color: black;">Welcome to Nexus Admin</h1>
+        </div>
+    </div>
+</div>
+
+<!-- Facility Map -->
+<div class="container">
+    <div id="map" style="width: 100%; height:100%"></div>
+</div>
+
+<!-- Trigger for Lightbox -->
+<a href="/infoModal" id="openModal" style="position: fixed; top: 80px; right: 10px; z-index: 1000;">
+    <img src="/static/img/help.png" alt="Open Modal" style="width: 50px; height: 50px;">
+</a>
+
+<!-- JS sources -->
+<script src="/static/js/adminPlotly.js"></script>
+
+<footer class="footer-custom text-center py-3">
+    <div class="container">
+        <span>&copy; {% block footer_year %}{{ current_year }}{% endblock %} Nexus Inventory Management System</span>
+    </div>
+</footer>
+{% endblock %}

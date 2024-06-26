@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- Define the document as HTML5 -->
+<!-- Set the language to English -->
+<html lang="en">
+<head>
+    <!-- Metadata and viewport settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Components Inventory</title>
+    <!-- CSS styling for the page -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        /* Styling for the logo section */
+        .logo {
+            margin-top: 20px;
+        }
+        /* Styling for the introductory text */
+        .intro {
+            margin-top: 20px;
+        }
+        /* Styling for the start button */
+        .start-btn {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .start-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo and introductory section -->
+    <div class="logo">
+        <img src="/static/img/NITLogo.png" alt="NIT Logo" width="200">
+    </div>
+    <!-- Introduction with a welcoming message -->
+    <div class="intro">
+        <h1>Welcome to Our PC Components Inventory System</h1>
+        <p>This system is designed to help businesses and individuals track and manage their PC components across multiple locations. Whether you're a retailer, a large-scale assembler, or an enthusiast, our inventory system is tailored to meet your needs, offering real-time updates, detailed component tracking, and a user-friendly interface for seamless management of your inventory.</p>
+        <p>Explore our features, add your inventory, and start optimizing your PC components management today!</p>
+    </div>
+    <!-- Button to start using the inventory system -->
+    <div>
+        <button class="start-btn" onclick="location.href='/login'">Start Right Now</button>
+    </div>
+</body>
+</html>

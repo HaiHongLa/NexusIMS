@@ -1,0 +1,213 @@
+{% extends "dashboardBase.html" %}
+
+{% block title %}
+Facility Inventory - Nexus IMS
+{% endblock %}
+
+{% block saveBtn %}
+<div class="d-flex flex-row-reverse" id="saveChangesBtnWrapper" style="display: none;">
+    <button id="saveChangesBtn" class="btn btn-light" style="display: none;">Save Changes</button>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<style>
+    .facility-info {
+        padding-top: 20px;
+    }
+
+    thead th {
+        position: sticky;
+        top: .5rem;
+        z-index: 1;
+        background-color: white;
+    }
+</style>
+
+<div class="container">
+    <div class="facility-info" id="facility-info" facilityId="{{ facility['id'] }}">
+        <h2>{{ facility['name'] }}</h2>
+        <p><strong>Address:</strong> {{ facility['streetAddress'] }}, {{ facility['city'] }}, {{
+            facility['stateProvinceRegion'] }}, {{ facility['postalCode'] }}</p>
+        <p><strong>Contact Information:</strong> {{ facility['contactInfo'] }}</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="btn-group" role="group" aria-label="Toggle options">
+        <input type="hidden" id="selectedOption" value="option1">
+        <button id="productBtn" type="button" class="btn btn-dark" data-bs-toggle="button" aria-pressed="true"
+            autocomplete="off" onclick="showProducts()">Products</button>
+        <button id="componentBtn" type="button" class="btn btn-light" data-bs-toggle="button" aria-pressed="false"
+            autocomplete="off" onclick="showComponents()">Components</button>
+    </div>
+</div>
+
+<div id="productWrapper" class="container" style="margin-top: 20px;">
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in productEntries %}
+            <tr>
+                <td>{{ entry['product']['brand'] }}</td>
+                <td>{{ entry['product']['model'] }}</td>
+                <td>{{ entry['product']['category'] }}</td>
+                <td>{{ entry['product']['price'] }}</td>
+                <td><input name="quantity" type="number" entryId="{{ entry['id'] }}" objId="{{ entry['product']['id']}}"
+                        origvalue="{{ entry['count'] }}" value="{{ entry['count'] }}" invtype="product" min="0"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="componentWrapper" class="container" style="margin-top: 20px; display: none;">
+    <table id="componentTable">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in componentEntries %}
+            <tr>
+                <td>{{ entry['component']['brand'] }}</td>
+                <td>{{ entry['component']['name'] }}</td>
+                <td>{{ entry['component']['category'] }}</td>
+                <td>{{ entry['component']['price'] }}</td>
+                <td><input name="quantity" type="number" entryId="{{ entry['id'] }}"
+                        objId="{{ entry['component']['id']}}" origvalue="{{ entry['count'] }}"
+                        value="{{ entry['count'] }}" invtype="component" min="0"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#productTable').DataTable();
+    });
+    $(document).ready(function () {
+        $('#componentTable').DataTable();
+    });
+</script>
+
+
+<!-- Display Submit button -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get all input elements of type number
+        var inputs = document.querySelectorAll('input[type="number"]');
+        var saveChangesBtnWrapper = document.getElementById('saveChangesBtnWrapper');
+        var saveChangesBtn = document.getElementById('saveChangesBtn')
+
+        // Add event listener to each input element
+        inputs.forEach(function (input) {
+            input.addEventListener('input', function () {
+                // Show the saveChangesBtn when any input value changes
+                saveChangesBtnWrapper.style.display = 'block';
+                saveChangesBtn.style.display = 'block'
+            });
+        });
+    });
+</script>
+
+
+<script>
+    document.getElementById("saveChangesBtn").addEventListener("click", function () {
+        var changesList = [];
+
+        var quantityInputs = document.getElementsByName("quantity");
+        for (var i = 0; i < quantityInputs.length; i++) {
+            var invType = quantityInputs[i].getAttribute('invtype');
+            var entryId = quantityInputs[i].getAttribute('entryId');
+            var objId = quantityInputs[i].getAttribute('objId');
+            var origValue = parseInt(quantityInputs[i].getAttribute("origvalue"), 10);
+            var enteredValue = parseInt(quantityInputs[i].value, 10);
+
+            if (enteredValue !== origValue) {
+                var change = {
+                    type: invType,
+                    entryId: entryId,
+                    objId: objId,
+                    quantity: enteredValue
+                };
+                changesList.push(change);
+            }
+        }
+
+        var facilityId = document.getElementById('facility-info').getAttribute('facilityId')
+
+        if (changesList.length > 0) {
+            // Construct the data to be sent
+            var data = {
+                facilityId: facilityId,
+                changesList: changesList
+            };
+
+            fetch('/save-changes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data['msg'])
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    });
+</script>
+
+<script>
+    pBtn = document.getElementById('productBtn')
+    cBtn = document.getElementById('componentBtn')
+    pTbl = document.getElementById('productWrapper')
+    cTbl = document.getElementById('componentWrapper')
+    function showProducts() {
+        pBtn.className = "btn btn-dark"
+        cBtn.className = "btn btn-light"
+        cTbl.style.cssText = "margin-top: 20px; display: none;"
+        pTbl.style.cssText = "margin-top: 20px;"
+    }
+    function showComponents() {
+        pBtn.className = "btn btn-light"
+        cBtn.className = "btn btn-dark"
+        pTbl.style.cssText = "margin-top: 20px; display: none;"
+        cTbl.style.cssText = "margin-top: 20px;"
+    }
+</script>
+
+{% endblock %}
+
+{% block footer_year %}
+2024
+{% endblock %}

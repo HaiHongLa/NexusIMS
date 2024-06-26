@@ -1,0 +1,59 @@
+{% extends "dashboardBase.html" %}
+
+{% block title %}
+Inventory - Nexus IMS
+{% endblock %}
+
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    .form-control {
+        margin-bottom: 20px;
+    }
+
+    .instruction-text {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+</style>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <p class="instruction-text">Please select a production facility:</p>
+            <select class="form-control choices-single" id="facilityDropdown">
+                <option></option>
+                {% for facility in facilities %}
+                <option value="{{ facility.id }}">{{ facility.name }}</option>
+                {% endfor %}
+            </select>
+            <button class="btn btn-primary" id="searchButton">Go</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("searchButton").addEventListener("click", function () {
+        // Get the selected value from the dropdown
+        var selectedValue = document.getElementById("facilityDropdown").value;
+
+        // If a value is selected, construct the URL and redirect
+        if (selectedValue) {
+            window.location.href = "/inventory/" + selectedValue;
+        } else {
+            // Handle the case where no value is selected
+            alert("Please select a production facility.");
+        }
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css" />
+{% endblock %}
+
+{% block footer_year %}
+2024
+{% endblock %}

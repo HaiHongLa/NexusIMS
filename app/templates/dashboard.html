@@ -1,0 +1,42 @@
+{% extends "dashboardBase.html" %}
+
+{% block title %}
+Dashboard - Nexus IMS
+{% endblock %}
+
+{% block content %}
+<!-- Content -->
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Inventory</h5>
+                <p class="card-text">Manage your inventory of products.</p>
+                <a href="#" class="btn btn-primary">View Products</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Shipments</h5>
+                <p class="card-text">Manage your orders and shipments.</p>
+                <a href="#" class="btn btn-primary">View Orders</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Order History</h5>
+                <p class="card-text">Manage your customer information.</p>
+                <a href="#" class="btn btn-primary">View Customers</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer_year %}
+2024
+{% endblock %}
